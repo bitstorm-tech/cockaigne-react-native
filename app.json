@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "cockaigne-react-native",
-    "slug": "cockaigne-react-native",
+    "name": "Cockaigne",
+    "slug": "cockaigne",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",

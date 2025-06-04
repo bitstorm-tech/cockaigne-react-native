@@ -1,21 +1,20 @@
-import { Text, View } from "react-native";
+import { DealListItem } from '@/components/DealListItem';
+import { SafeAreaView, StyleSheet } from 'react-native';
 
 export default function Index() {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-      <Text style={{
-        color: "white",
-        backgroundColor: "purple",
-        width: "100%",
-        textAlign: 'center'
-      }}>jaja nene</Text>
-    </View>
-  );
+    return (
+        <SafeAreaView style={styles.container}>
+            <DealListItem></DealListItem>
+            <DealListItem></DealListItem>
+            <DealListItem></DealListItem>
+            <DealListItem></DealListItem>
+        </SafeAreaView>
+    );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        gap: 4,
+    },
+});
