@@ -1,4 +1,5 @@
 export interface SvgProps {
     width?: number;
-    heigth?: number;
+    height?: number;
+    fill?: string;
 }

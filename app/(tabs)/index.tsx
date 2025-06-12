@@ -1,4 +1,6 @@
 import { DealListItem } from '@/components/DealListItem';
+import { DealsListHeader } from '@/components/DealsListHeader';
+import { UserProfileHeader } from '@/components/UserProfileHeader';
 import { useDeals } from '@/hooks/useDeals';
 import { ActivityIndicator, RefreshControl, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
@@ -48,6 +50,13 @@ export default function DealsScreen() {
                 scrollEventThrottle={400}
                 refreshControl={<RefreshControl refreshing={refreshing} onRefresh={refresh} tintColor="#ffffff" />}
             >
+                <UserProfileHeader username="JBJB" isPro={true} activities={2} favorites={0} saved={0} address="Jägerstraße 40" city="10117 Berlin" />
+                <DealsListHeader
+                    dealCount={deals.length}
+                    onFilterPress={() => {
+                        // TODO: Implement filter functionality
+                    }}
+                />
                 {deals.map((deal) => (
                     <DealListItem key={deal.id} deal={deal} />
                 ))}
