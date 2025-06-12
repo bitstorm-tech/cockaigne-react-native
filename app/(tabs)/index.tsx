@@ -5,7 +5,7 @@ export default function DealsScreen() {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.header}>
-                <Text style={styles.title}>Today's Deals</Text>
+                <Text style={styles.title}>Today&apos;s Deals</Text>
             </View>
             <ScrollView 
                 contentContainerStyle={styles.scrollContent}
