@@ -1,23 +1,14 @@
-import { SafeAreaView, StyleSheet, Text, View, TextInput } from 'react-native';
 import { Themes } from '@/components/themes';
+import { SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function SearchScreen() {
     return (
         <SafeAreaView style={styles.container}>
-            <View style={styles.header}>
-                <Text style={styles.title}>Search Deals</Text>
-            </View>
             <View style={styles.searchContainer}>
-                <TextInput 
-                    style={styles.searchInput}
-                    placeholder="Search for deals..."
-                    placeholderTextColor={Themes.dark.text}
-                />
+                <TextInput style={styles.searchInput} placeholder="Search for deals..." placeholderTextColor={Themes.dark.text} />
             </View>
             <View style={styles.content}>
-                <Text style={styles.placeholderText}>
-                    Search functionality coming soon
-                </Text>
+                <Text style={styles.placeholderText}>Search functionality coming soon</Text>
             </View>
         </SafeAreaView>
     );

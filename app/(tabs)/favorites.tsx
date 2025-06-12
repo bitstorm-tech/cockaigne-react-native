@@ -1,20 +1,15 @@
-import { SafeAreaView, StyleSheet, Text, View, ScrollView } from 'react-native';
 import { Themes } from '@/components/themes';
 import { Ionicons } from '@expo/vector-icons';
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 export default function FavoritesScreen() {
     return (
         <SafeAreaView style={styles.container}>
-            <View style={styles.header}>
-                <Text style={styles.title}>Favorites</Text>
-            </View>
             <ScrollView contentContainerStyle={styles.scrollContent}>
                 <View style={styles.emptyState}>
                     <Ionicons name="heart-outline" size={64} color={Themes.dark.text} />
                     <Text style={styles.emptyStateTitle}>No favorites yet</Text>
-                    <Text style={styles.emptyStateText}>
-                        Save your favorite deals to access them quickly here
-                    </Text>
+                    <Text style={styles.emptyStateText}>Save your favorite deals to access them quickly here</Text>
                 </View>
             </ScrollView>
         </SafeAreaView>
