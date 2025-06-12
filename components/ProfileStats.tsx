@@ -8,7 +8,7 @@ interface ProfileStatsProps {
     saved: number;
 }
 
-export const ProfileStats: React.FC<ProfileStatsProps> = ({ activities, favorites, saved }) => {
+export const ProfileStats = ({ activities, favorites, saved }: ProfileStatsProps) => {
     return (
         <View style={styles.container}>
             <View style={styles.statItem}>

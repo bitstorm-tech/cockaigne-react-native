@@ -7,7 +7,7 @@ interface LocationInfoProps {
     city: string;
 }
 
-export const LocationInfo: React.FC<LocationInfoProps> = ({ address, city }) => {
+export const LocationInfo = ({ address, city }: LocationInfoProps) => {
     return (
         <View style={styles.container}>
             <Ionicons name="location-sharp" size={16} color="#666666" />

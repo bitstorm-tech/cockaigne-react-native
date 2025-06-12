@@ -5,7 +5,7 @@ interface ProfilePictureProps {
     size?: number;
 }
 
-export const ProfilePicture: React.FC<ProfilePictureProps> = ({ size = 80 }) => {
+export const ProfilePicture = ({ size = 80 }: ProfilePictureProps) => {
     return (
         <View style={[styles.container, { width: size, height: size }]}>
             <View style={styles.imageContainer}>

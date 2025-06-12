@@ -13,7 +13,7 @@ interface UserProfileHeaderProps {
     city: string;
 }
 
-export const UserProfileHeader: React.FC<UserProfileHeaderProps> = ({
+export const UserProfileHeader = ({
     username,
     isPro = false,
     activities,
@@ -21,7 +21,7 @@ export const UserProfileHeader: React.FC<UserProfileHeaderProps> = ({
     saved,
     address,
     city,
-}) => {
+}: UserProfileHeaderProps) => {
     return (
         <View style={styles.container}>
             <View style={styles.headerRow}>

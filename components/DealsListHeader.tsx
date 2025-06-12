@@ -7,7 +7,7 @@ interface DealsListHeaderProps {
     dealCount?: number;
 }
 
-export const DealsListHeader: React.FC<DealsListHeaderProps> = ({ onFilterPress, dealCount }) => {
+export const DealsListHeader = ({ onFilterPress, dealCount }: DealsListHeaderProps) => {
     return (
         <View style={styles.container}>
             <View style={styles.titleSection}>
