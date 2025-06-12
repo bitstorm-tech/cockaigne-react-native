@@ -1,21 +1,5 @@
-import { DealListItem } from '@/components/DealListItem';
-import { SafeAreaView, StyleSheet } from 'react-native';
+import { Redirect } from 'expo-router';
 
-export default function Index() {
-    return (
-        <SafeAreaView style={styles.container}>
-            <DealListItem></DealListItem>
-            <DealListItem></DealListItem>
-            <DealListItem></DealListItem>
-            <DealListItem></DealListItem>
-        </SafeAreaView>
-    );
+export default function RootIndex() {
+  return <Redirect href="/(tabs)" />;
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        gap: 4,
-        backgroundColor: '#000000',
-    },
-});
