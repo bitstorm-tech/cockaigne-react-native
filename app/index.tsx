@@ -16,5 +16,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         gap: 4,
+        backgroundColor: '#000000',
     },
 });
