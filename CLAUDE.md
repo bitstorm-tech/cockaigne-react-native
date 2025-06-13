@@ -26,10 +26,19 @@ npm run web      # Web browser
 
 # Linting
 npm run lint
+npm run types
+
+# Formatting
+npm run format
 
 # Install dependencies
 npm install
 ```
+
+## Development Workflow
+
+- Run all linters at the end
+- Run all formatters at the very end
 
 ## Architecture
 
