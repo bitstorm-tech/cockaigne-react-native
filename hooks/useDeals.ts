@@ -1,7 +1,7 @@
-import { useState, useEffect, useCallback } from 'react';
-import { Deal } from '@/types/deal';
-import { ApiError, QueryParams } from '@/types/api';
 import { dealsApi, mockDeals } from '@/api/deals';
+import { ApiError, QueryParams } from '@/types/api';
+import { Deal } from '@/types/deal';
+import { useCallback, useEffect, useState } from 'react';
 
 interface UseDealsResult {
   deals: Deal[];
@@ -40,19 +40,19 @@ export function useDeals(initialParams?: QueryParams): UseDealsResult {
 
         if (USE_MOCK_DATA) {
           // Simulate API delay
-          await new Promise(resolve => setTimeout(resolve, 500));
-          
+          await new Promise((resolve) => setTimeout(resolve, 500));
+
           // Simulate pagination with mock data
           const startIndex = (pageNumber - 1) * (params.pageSize || 20);
           const endIndex = startIndex + (params.pageSize || 20);
           const paginatedDeals = mockDeals.slice(startIndex, endIndex);
-          
+
           if (isRefresh) {
             setDeals(paginatedDeals);
           } else {
-            setDeals(prev => pageNumber === 1 ? paginatedDeals : [...prev, ...paginatedDeals]);
+            setDeals((prev) => (pageNumber === 1 ? paginatedDeals : [...prev, ...paginatedDeals]));
           }
-          
+
           setHasMore(endIndex < mockDeals.length);
         } else {
           const response = await dealsApi.getDeals({
@@ -64,7 +64,7 @@ export function useDeals(initialParams?: QueryParams): UseDealsResult {
             if (isRefresh) {
               setDeals(response.data);
             } else {
-              setDeals(prev => pageNumber === 1 ? response.data : [...prev, ...response.data]);
+              setDeals((prev) => (pageNumber === 1 ? response.data : [...prev, ...response.data]));
             }
             setHasMore(response.pagination.page < response.pagination.totalPages);
           } else {
@@ -84,7 +84,7 @@ export function useDeals(initialParams?: QueryParams): UseDealsResult {
         setRefreshing(false);
       }
     },
-    [params]
+    [params],
   );
 
   useEffect(() => {

@@ -10,8 +10,8 @@
     "web": "expo start --web",
     "lint": "expo lint",
     "dev-build": "eas build --profile=development",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "format": "prettier --write ./app ./components ./config ./hooks ./types",
+    "format:check": "prettier --check ./app ./components ./config ./hooks ./types",
     "types": "tsc --noEmit"
   },
   "dependencies": {

@@ -24,5 +24,5 @@ export const API_ENDPOINTS = {
 
 export const DEFAULT_HEADERS = {
   'Content-Type': 'application/json',
-  'Accept': 'application/json',
+  Accept: 'application/json',
 };
