@@ -8,7 +8,14 @@
       "Bash(npm run lint)",
       "Bash(npm install)",
       "Bash(npm view:*)",
-      "Bash(npm run types:*)"
+      "Bash(npm run types:*)",
+      "Bash(xcodebuild:*)",
+      "Bash(node:*)",
+      "Bash(pod install:*)",
+      "Bash(npm install:*)",
+      "Bash(rm:*)",
+      "Bash(pod deintegrate:*)",
+      "Bash(npm uninstall:*)"
     ],
     "deny": []
   }
