@@ -1,7 +1,5 @@
-import { LocationPinIcon } from '@/components/icons/LocationPinIcon';
-import { MapFoldIcon } from '@/components/icons/MapFoldIcon';
-import { TrendUpIcon } from '@/components/icons/TrendUpIcon';
 import { Themes } from '@/components/themes';
+import { Ionicons } from '@expo/vector-icons';
 import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import React, { useCallback, useMemo } from 'react';
 import { Platform, Pressable, StyleSheet, View } from 'react-native';
@@ -59,11 +57,11 @@ export function BottomTabBar({ state, descriptors, navigation }: BottomTabBarPro
                 testID={`tab-${name}`}
               >
                 {name === 'search' ? (
-                  <LocationPinIcon width={28} height={28} fill={color} />
+                  <Ionicons name="location" size={28} color={color} />
                 ) : name === 'index' ? (
-                  <TrendUpIcon width={32} height={32} fill={color} />
+                  <Ionicons name="trending-up" size={32} color={color} />
                 ) : (
-                  <MapFoldIcon width={28} height={28} fill={color} />
+                  <Ionicons name="map" size={28} color={color} />
                 )}
               </Pressable>
             );
