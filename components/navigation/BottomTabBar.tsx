@@ -91,8 +91,9 @@ const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: Themes.dark.bottomBar.background,
-    borderTopLeftRadius: Themes.dark.bottomBar.radius,
-    borderTopRightRadius: Themes.dark.bottomBar.radius,
+    // Remove rounded corners on top edges per design update
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
     overflow: 'hidden',
   },
   divider: {
