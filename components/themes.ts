@@ -22,6 +22,20 @@ export type Theme = {
   sand200: string;
   sand300: string;
   bottomBar: BottomBarTokens;
+  // Optional new tokens for cards and controls (dummy for now)
+  card?: {
+    outer: string;
+    inner: string;
+  };
+  control?: {
+    outline: string;
+  };
+  radii?: {
+    sm: number;
+    md: number;
+    lg: number;
+    xl: number;
+  };
 };
 
 export const Themes: { dark: Theme; light: Partial<Theme> } = {
@@ -46,6 +60,19 @@ export const Themes: { dark: Theme; light: Partial<Theme> } = {
       iconActive: '#E9DBC0',
       iconInactive: 'rgba(233,219,192,0.7)',
       radius: 16,
+    },
+    card: {
+      outer: 'rgb(31 36 38)',
+      inner: 'rgb(39 45 48)',
+    },
+    control: {
+      outline: '#2e2e2e',
+    },
+    radii: {
+      sm: 8,
+      md: 12,
+      lg: 16,
+      xl: 20,
     },
   },
   light: {},

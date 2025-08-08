@@ -46,11 +46,16 @@ export function useDeals(initialParams?: QueryParams): UseDealsResult {
           const startIndex = (pageNumber - 1) * (params.pageSize || 20);
           const endIndex = startIndex + (params.pageSize || 20);
           const paginatedDeals = mockDeals.slice(startIndex, endIndex);
+          // Add deterministic dummy distances (meters) for UI rendering
+          const withDistance: Deal[] = paginatedDeals.map((d, idx) => ({
+            ...d,
+            distanceMeters: 300 + ((startIndex + idx) % 6) * 400, // 300m, 700m, 1.1km, 1.5km, 1.9km, 2.3km
+          }));
 
           if (isRefresh) {
-            setDeals(paginatedDeals);
+            setDeals(withDistance);
           } else {
-            setDeals((prev) => (pageNumber === 1 ? paginatedDeals : [...prev, ...paginatedDeals]));
+            setDeals((prev) => (pageNumber === 1 ? withDistance : [...prev, ...withDistance]));
           }
 
           setHasMore(endIndex < mockDeals.length);

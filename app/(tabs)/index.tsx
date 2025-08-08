@@ -1,20 +1,12 @@
-import { DealListItem } from '@/components/DealListItem';
+import { DealCard } from '@/components/deals/DealCard';
 import { DealsListHeader } from '@/components/DealsListHeader';
 import { UserProfileHeader } from '@/components/UserProfileHeader';
 import { useDeals } from '@/hooks/useDeals';
-import { ActivityIndicator, RefreshControl, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Deal } from '@/types/deal';
+import { ActivityIndicator, FlatList, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function DealsScreen() {
   const { deals, loading, error, refreshing, hasMore, refresh, loadMore, retry } = useDeals();
-
-  const handleScroll = (event: any) => {
-    const { layoutMeasurement, contentOffset, contentSize } = event.nativeEvent;
-    const isCloseToBottom = layoutMeasurement.height + contentOffset.y >= contentSize.height - 20;
-
-    if (isCloseToBottom && hasMore && !loading) {
-      loadMore();
-    }
-  };
 
   if (loading && deals.length === 0) {
     return (
@@ -43,34 +35,41 @@ export default function DealsScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView
+      <FlatList<Deal>
+        data={deals}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }: { item: Deal }) => <DealCard deal={item} />}
+        ListHeaderComponent={
+          <>
+            <UserProfileHeader username="JBJB" isPro={true} activities={2} favorites={0} saved={0} address="Jägerstraße 40" city="10117 Berlin" />
+            <DealsListHeader
+              dealCount={deals.length}
+              onFilterPress={() => {
+                // TODO: Implement filter functionality
+              }}
+            />
+          </>
+        }
+        ListFooterComponent={
+          loading && deals.length > 0 ? (
+            <View style={styles.loadMoreContainer}>
+              <ActivityIndicator size="small" color="#ffffff" />
+            </View>
+          ) : !hasMore && deals.length > 0 ? (
+            <View style={styles.endContainer}>
+              <Text style={styles.endText}>No more deals</Text>
+            </View>
+          ) : null
+        }
+        onEndReachedThreshold={0.5}
+        onEndReached={() => {
+          if (!loading && hasMore) loadMore();
+        }}
+        refreshing={refreshing}
+        onRefresh={refresh}
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
-        onScroll={handleScroll}
-        scrollEventThrottle={400}
-        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={refresh} tintColor="#ffffff" />}
-      >
-        <UserProfileHeader username="JBJB" isPro={true} activities={2} favorites={0} saved={0} address="Jägerstraße 40" city="10117 Berlin" />
-        <DealsListHeader
-          dealCount={deals.length}
-          onFilterPress={() => {
-            // TODO: Implement filter functionality
-          }}
-        />
-        {deals.map((deal) => (
-          <DealListItem key={deal.id} deal={deal} />
-        ))}
-        {loading && deals.length > 0 && (
-          <View style={styles.loadMoreContainer}>
-            <ActivityIndicator size="small" color="#ffffff" />
-          </View>
-        )}
-        {!hasMore && deals.length > 0 && (
-          <View style={styles.endContainer}>
-            <Text style={styles.endText}>No more deals</Text>
-          </View>
-        )}
-      </ScrollView>
+      />
     </SafeAreaView>
   );
 }

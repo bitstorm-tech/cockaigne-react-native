@@ -10,6 +10,8 @@ export interface Deal {
   imageUrl?: string;
   validFrom?: string;
   validUntil?: string;
+  // Temporary client-computed distance in meters (dummy until backend provides it)
+  distanceMeters?: number;
   isActive: boolean;
   createdAt: string;
   updatedAt: string;
